@@ -27,23 +27,23 @@ class UserSeeder extends Seeder
         $user =  User::create([
             'role_id' => '1',
             'donor_id' => $id,
-            'name' => 'Md.Masum',
-            'username' => 'masum20',
+            'name' => 'Md.Admin',
+            'username' => 'admin20',
             'first_mobile' => '01750752781',
-            'email' => 'mdmasum.uv@gmail.com',
+            'email' => 'admin@gmail.com',
             'present_address' => 'Mohammadpur',
-            'password' => Hash::make('masum2781'),
+            'password' => Hash::make('admin'),
         ]);
 
         DB::table('users')->insert([
             'role_id' => '3',
             'donor_id' => $id+1,
-            'name' => 'Md.Admin',
-            'username' => 'admin20',
+            'name' => 'Md.User',
+            'username' => 'user20',
             'first_mobile' => '01892273250',
-            'email' => 'admin@gmail.com',
+            'email' => 'user@gmail.com',
             'present_address' => 'Mohammadpur',
-            'password' => Hash::make('admin2781'),
+            'password' => Hash::make('user'),
         ]);
     }
 }
