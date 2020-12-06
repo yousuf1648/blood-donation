@@ -46,8 +46,8 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">ই-মেইল</label>
-                                            <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="email" autofocus placeholder="আপনার ই-মেইল বসান">
+                                            <label for="exampleInputEmail1">ই-মেইল / ইউজারনেম</label>
+                                            <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="email" autofocus placeholder="আপনার ই-মেইল অথবা ইউজারনেম বসান" style="height: 52px !important;">
                                             @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

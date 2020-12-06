@@ -22,8 +22,8 @@ class CreateWebsitesTable extends Migration
             $table->string('email');
             $table->text('address');
             $table->string('phone');
-            $table->string('favicon')->nullable();
-            $table->string('logo')->nullable();
+            $table->string('favicon')->default('backend/img/website/favicon.png');
+            $table->string('logo')->default('backend/img/website/default.png');
             $table->text('twitter_api')->nullable();
             $table->text('google_map')->nullable();
             $table->text('icon')->nullable();
