@@ -51,7 +51,7 @@ class ThanaController extends Controller
 
         $thana = new Thana();
         $thana->dis_id = $request->dis_id;
-        $thana->thana_name = $request->thana_name;
+        $thana->thana_name = Str::ucfirst($request->thana_name);
         $thana->slug = Str::slug($request->thana_name);
 
         $thana->save();

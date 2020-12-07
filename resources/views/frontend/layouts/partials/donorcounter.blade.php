@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-12 fact-inner">
                 <h2>আমরা বিগত <b>১০ বছর</b> <br>ধরে বিভিন্ন্য রক্তদান কর্মসুচির মাধ্যমে মানুষের পাশে আছি।</h2>
-                <a href="#" class="thm-btn inverse">আপনিও যদি আমাদের সাথে থকতে </a>
+                <a href="{{ route('donor.registration') }}" class="thm-btn inverse">আপনিও যদি আমাদের সাথে থকতে চান।</a>
             </div>
             <div class="col-lg-6 col-md-12 md-text-center">
                 <div class="single-fact">

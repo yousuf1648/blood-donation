@@ -18,16 +18,21 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\WebsiteController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\BloodRequestControllers;
+use App\Http\Controllers\Backend\BloodBankController;
+use App\Http\Controllers\Backend\FqaController;
+use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\EventController;
 
-// TODO: User
+// TODO: Frontend Routes----------------------
 use App\Http\Controllers\Frontend\DonorsController;
 use App\Http\Controllers\Frontend\BloodRequestController;
 use App\Http\Controllers\Frontend\DonorsRegistrationController;
 
 
 
-// Routes Start From Here-------------------------------------------------------------------------
+// TODO: Routes Start From Here-------------------------------------------------------------------------
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/area-thana', [HomeController::class, 'area_thana'])->name('area.thana');
 
 // TODO: Front end donor routes------------------------
 Route::get('/blood-donor', [DonorsController::class, 'index'])->name("blood.donor");
@@ -48,6 +53,7 @@ Auth::routes();
 
 // TODO: Admin Routes---------------------------------------------
 Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>['auth','admin']], function () {
+    // TODO: Dashboard route
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // TODO: Role Routes
@@ -113,6 +119,36 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>['auth','admin'
     Route::get('bloodrequest-view-{id}', [BloodRequestControllers::class, 'show'])->name('bloodrequest.view');
     Route::get('bloodrequest-delete-{id}', [BloodRequestControllers::class, 'destroy'])->name('bloodrequest.delete');
     Route::get('approve-blood-request', [BloodRequestControllers::class, 'approverequest'])->name('approverequest');
+
+    // TODO: Blood Bank Routes
+    Route::get('bloodbank', [BloodBankController::class, 'index'])->name('bloodbank');
+    Route::post('bloodbank-store', [BloodBankController::class, 'store'])->name('bloodbank.store');
+    Route::post('bloodbank-update-{id}', [BloodBankController::class, 'update'])->name('bloodbank.update');
+    Route::get('bloodbank-delete-{id}', [BloodBankController::class, 'destroy'])->name('bloodbank.delete');
+    Route::post('bloodbank-activity', [BloodBankController::class, 'bloodbank_activity'])->name('bloodbank.activity');
+
+    // TODO: FQA Routes
+    Route::get('fqa', [FqaController::class, 'index'])->name('fqa');
+    Route::post('fqa-store', [FqaController::class, 'store'])->name('fqa.store');
+    Route::post('fqa-update-{id}', [FqaController::class, 'update'])->name('fqa.update');
+    Route::get('fqa-delete-{id}', [FqaController::class, 'destroy'])->name('fqa.delete');
+    Route::post('fqa-activity', [FqaController::class, 'fqa_activity'])->name('fqa.activity');
+
+    // TODO: Blog Route
+    Route::get('blog', [BlogController::class, 'index'])->name('blog');
+    Route::post('blog-store', [BlogController::class, 'store'])->name('blog.store');
+    Route::post('blog-update-{id}', [BlogController::class, 'update'])->name('blog.update');
+    Route::get('blog-delete-{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+    Route::post('blog-activity', [BlogController::class, 'blog_activity'])->name('blog.activity');
+
+    // TODO: event Route
+    Route::get('event', [EventController::class, 'index'])->name('event');
+    Route::post('event-store', [EventController::class, 'store'])->name('event.store');
+    Route::post('event-update-{id}', [EventController::class, 'update'])->name('event.update');
+    Route::get('event-delete-{id}', [EventController::class, 'destroy'])->name('event.delete');
+    Route::post('event-activity', [EventController::class, 'event_activity'])->name('event.activity');
+
+
 
 
 

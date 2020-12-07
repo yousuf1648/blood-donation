@@ -125,7 +125,7 @@
 
                         <div class="form-group">
                             <label for="dis_name">District Name</label>
-                            <input type="text" class="form-control" id="dis_name" name="dis_name" placeholder="Enter Post Code">
+                            <input type="text" class="form-control" id="dis_name" name="dis_name" placeholder="Enter districts name">
                         </div>
                         @if ($errors->has('dis_name'))
                             <div class="invalid-feedback" style="display: block !important;">

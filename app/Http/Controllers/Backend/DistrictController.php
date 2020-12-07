@@ -53,7 +53,7 @@ class DistrictController extends Controller
         $district = new District();
 
         $district->div_id = $request->div_id;
-        $district->dis_name = $request->dis_name;
+        $district->dis_name = Str::ucfirst($request->dis_name);
         $district->slug = Str::slug($request->dis_name);
 
         $district->save();

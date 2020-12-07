@@ -4,6 +4,24 @@
     {{ $website->title }}
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/datepicker.css') }}">
+
+    <style>
+        .input-field{
+            position: relative;
+            display: block;
+            width: 100%;
+            line-height: 34px;
+            padding: 8px 20px;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            height: 52px;
+        }
+    </style>
+@endsection
+
 @section('front-content')
 {{-- slider --}}
 @include('frontend.layouts.partials.slider')
@@ -134,39 +152,40 @@
                         <form class="appoinment-form" action="">
                             <div class="form-group col-md-offset-2 col-md-8">
                                 <div class="select-style">
-                                    <select class="form-control input-lg blood_group select2-hidden-accessible" name="blood_group" tabindex="-1" aria-hidden="true">
-                                        <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
-                                        <option value="1">A+ পজেটিভ</option>
-                                        <option value="2">A- নেগেটিভ</option>
-                                        <option value="3">B+ পজেটিভ</option>
-                                        <option value="4">B- নেগেটিভ</option>
-                                        <option value="5">AB+ পজেটিভ</option>
-                                        <option value="6">AB- নেগেটিভ</option>
-                                        <option value="7">O+ পজেটিভ</option>
-                                        <option value="8">O- নেগেটিভ</option>
+                                    <select class="form-control js-example-basic-single" name="blood_group" tabindex="-1" aria-hidden="true">
+                                        <option value="" selected>রক্তের গ্রুপ নির্বাচন করুন</option>
+                                        @php
+                                            $bloods = DB::table('bloods')->get();
+                                        @endphp
+                                        @foreach ($bloods as $key=>$blood)
+                                            <option value="{{ $blood->blood_name }}">{{ $blood->blood_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group col-md-offset-2 col-md-8">
                                 <div class="select-style">
-                                    <select class="form-control input-lg district select2-hidden-accessible" name="district" tabindex="-1" aria-hidden="true">
-                                    <option value="">জেলা নির্বাচন করুন</option>
-                                    <option value="45">কক্স বাজার - Cox's Bazar</option>
-                                    <option value="6">কিশোরগঞ্জ - Kishoreganj</option>
-                                    <option value="44">কুমিল্লা - Comilla</option>
-                            </select>
-                        </div>
-                        </div>
-                        <div class="form-group col-md-offset-2 col-md-8">
-                        <div class="select-style">
-                            <select class="form-control input-lg upazila select2-hidden-accessible" name="upazila" tabindex="-1" aria-hidden="true">
-                                <option value="">থানা নির্বাচন করুন </option>
-                            </select>
-                        </div>
-                        </div>
-                        <div class="form-group col-md-offset-2 col-md-8">
-                            <button type="submit" class="thm-btn">অনুস্নধান করুন</button>
-                        </div>
+                                    <select class="form-control js-example-basic-single" name="dis_id" tabindex="-1" aria-hidden="true" id="dis_id">
+                                        <option value="" selected>রক্তের গ্রুপ নির্বাচন করুন</option>
+                                        @php
+                                            $districts = DB::table('districts')->get();
+                                        @endphp
+                                        @foreach ($districts as $key=>$district)
+                                            <option value="{{ $district->id }}">{{ $district->dis_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-offset-2 col-md-8">
+                                <div class="select-style">
+                                    <select class="form-control js-example-basic-single" name="thana_id" id="thana" tabindex="-1" aria-hidden="true">
+                                        <option value="">থানা নির্বাচন করুন </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-offset-2 col-md-8">
+                                <button type="submit" class="thm-btn">অনুস্নধান করুন</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -189,7 +208,7 @@
                 <p>
                     রক্ত কৃত্তিমভাবে তৈরী করা যায় না, শুধুমাত্র একজন মানুষই পারে আরেকজন মানুষকে বাঁচাতে। কিন্তু দুঃখের ব্যাপার, প্রতিবছর বহুসংখ্যক মানুষ মারা যাচ্ছে জরুরি মুহুর্তে প্রয়োজনীয় রক্তের অভাবে। বর্তমানে বাংলাদেশে প্রতি বছর রক্তের প্রয়োজন মাত্র ৯ লাখ ব্যাগ। অথচ জনবহুল এই দেশে এখনো মানুষ মারা যাচ্ছে রক্তের অভাবে। রক্তের এই চাহিদা খুব সহজেই পূরণ করা সম্ভব হবে যদি আমাদের দেশের সকল প্রান্তের পূর্ণবয়স্ক মানুষদের রক্তদানের প্রয়োজনীয়তা এবং সুফলতা বুঝিয়ে সচেতন করা যায়।
                 </p>
-                <a href="#" class="thm-btn">আপনি কি রক্ত দিতে আগ্রহী?</a>
+                <a href="{{ route('donor.registration') }}" class="thm-btn">আপনি কি রক্ত দিতে আগ্রহী?</a>
             </div>
         </div>
     </div>
@@ -212,7 +231,7 @@
                     <div class="thumb">
                         <img src="{{ asset('frontend/img/event/e1.jpg') }}" alt="">
                         <div class="overlay">
-                            <a href="#">যোগদান করুন</a>
+                            <a href="{{ route('donor.registration') }}">যোগদান করুন</a>
                         </div>
                     </div>
                     <div class="caption">
@@ -228,7 +247,7 @@
                     <div class="thumb">
                         <img src="{{ asset('frontend/img/event/e1.jpg') }}" alt="">
                         <div class="overlay">
-                            <a href="#">যোগদান করুন</a>
+                            <a href="{{ route('donor.registration') }}">যোগদান করুন</a>
                         </div>
                     </div>
                     <div class="caption">
@@ -244,7 +263,7 @@
                     <div class="thumb">
                         <img src="{{ asset('frontend/img/event/e1.jpg') }}" alt="">
                         <div class="overlay">
-                            <a href="#">যোগদান করুন</a>
+                            <a href="{{ route('donor.registration') }}">যোগদান করুন</a>
                         </div>
                     </div>
                     <div class="caption">
@@ -487,7 +506,7 @@
                         <span class="inner"></span>
                     </span>
                 </div>
-                <a href="#" class="thm-btn">যোগাযোগের তথ্য দিয়ে পোষ্ট করুন।</a>
+                <a href="{{ route('blood.request') }}" class="thm-btn">যোগাযোগের তথ্য দিয়ে পোষ্ট করুন।</a>
             </div>
         </div>
     </div>
@@ -611,4 +630,83 @@
         </div>
     </div>
 </section>
+@endsection
+@section('js')
+    <script src="{{ asset('frontend/js/select2.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/datepicker.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        // date picker
+        $(function () {
+	        $('#datepicker').datepicker({
+	            format: "dd/mm/yyyy",
+	            autoclose: true,
+	            todayHighlight: true,
+		        showOtherMonths: true,
+		        selectOtherMonths: true,
+		        autoclose: true,
+		        changeMonth: true,
+		        changeYear: true,
+		        orientation: "button"
+	        });
+        });
+
+        // date picker
+        $(function () {
+	        $('#datepickers').datepicker({
+	            format: "dd/mm/yyyy",
+	            autoclose: true,
+	            todayHighlight: true,
+		        showOtherMonths: true,
+		        selectOtherMonths: true,
+		        autoclose: true,
+		        changeMonth: true,
+		        changeYear: true,
+		        orientation: "button"
+	        });
+        });
+
+
+        // For post code-------------------------
+        $(document).ready(function () {
+            $('#dis_id').on('change',function(e) {
+                var dis_id = e.target.value;
+
+                console.log(dis_id);
+                $.ajax({
+                    url:"{{ route('area.thana') }}",
+                    type:"POST",
+                    data: {
+                        dis_id: dis_id,
+                        _token: '{{ csrf_token() }}',
+                    },
+                    success:function (data) {
+                        $('#thana').html(data.html);
+                    }
+                })
+            });
+        });
+
+        // For area-----------------
+        // $(document).ready(function () {
+        //     $('#thana_id').on('change',function(e) {
+        //         var thana_id = e.target.value;
+        //         console.log(thana_id);
+        //         $.ajax({
+        //             url:"{{ route('donor.area') }}",
+        //             type:"POST",
+        //             data: {
+        //                 thana_id: thana_id,
+        //                 _token: '{{ csrf_token() }}',
+        //             },
+        //             success:function (data) {
+        //                 $('#area').html(data.html);
+        //             }
+        //         })
+        //     });
+        // });
+    </script>
 @endsection

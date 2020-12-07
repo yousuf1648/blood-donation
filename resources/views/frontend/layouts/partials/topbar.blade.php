@@ -13,7 +13,9 @@
                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                 @auth
                     @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
-                        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-user"></i></a></li>
+                        <li><a href="{{ route('admin.dashboard') }}" target="_blank"><i class="fa fa-user"></i></a></li>
+                    @else
+                        <li><a href="{{ route('home') }}" target="_blank"><i class="fa fa-user"></i></a></li>
                     @endif
                 @endauth
             </ul>

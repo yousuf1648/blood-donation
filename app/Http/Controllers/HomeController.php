@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin\Website;
 use App\Models\Admin\Slider;
+use App\Models\Admin\District;
+use App\Models\Admin\Thana;
 use App\Models\Frontend\BloodRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -47,4 +49,27 @@ class HomeController extends Controller
 
         return view('frontend.pages.index', compact('website', 'slider', 'activedonorcount', 'approvebloodrequests', 'donors', 'bloodrequestcount'));
     }
+
+
+
+    // get thanas---------------------
+    public function area_thana(Request $request){
+        $dis_id = $request->dis_id;
+
+        if (!$dis_id) {
+            $html = '<option value="">'.'থানা নির্বাচন করুন'.'</option>';
+        } else {
+            $html = '';
+            $thanas = Thana::where('dis_id',$dis_id)->get();
+            foreach ($thanas as $thana) {
+                $html .= '<option value="'.$thana->id.'">'.$thana->thana_name.'</option>';
+            }
+        }
+
+        return response()->json(['html' => $html]);
+    }
+
+
+
+
 }

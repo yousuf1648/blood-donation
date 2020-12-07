@@ -5,13 +5,18 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class Event extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'div_id',
-        'dis_name',
+        'title',
         'slug',
+        'details',
+        'event_date',
+        'event_start_time',
+        'event_end_time',
+        'feature_image',
+        'status',
     ];
 }

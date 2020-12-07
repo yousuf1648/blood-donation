@@ -105,7 +105,7 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="dis_id">Division Name</label>
+                            <label for="dis_id">District Name</label>
                             <select class="form-control select2" style="width: 100%;" name="dis_id">
                                 <option selected="selected" value="">---Select One---</option>
                                 @foreach ($districts as $district)

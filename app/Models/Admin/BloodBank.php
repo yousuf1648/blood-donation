@@ -5,13 +5,16 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class BloodBank extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'div_id',
-        'dis_name',
+        'dis_id',
+        'blood_bank_name',
         'slug',
+        'blood_bank_address',
+        'blood_bank_number',
+        'status',
     ];
 }

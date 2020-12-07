@@ -5,13 +5,14 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class Fqa extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'div_id',
-        'dis_name',
+        'question',
         'slug',
+        'answere',
+        'status',
     ];
 }

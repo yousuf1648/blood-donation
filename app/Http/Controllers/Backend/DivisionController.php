@@ -49,7 +49,7 @@ class DivisionController extends Controller
 
         $division = new Division();
 
-        $division->div_name = $request->div_name;
+        $division->div_name = Str::ucfirst($request->div_name);
         $division->slug = Str::slug($request->div_name);
 
         $division->save();

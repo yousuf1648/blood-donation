@@ -137,7 +137,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
-                Blood Request
+                Blood
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -157,12 +157,39 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('admin.bloodbank') }}" class="nav-link {{ Route::is('admin.bloodbank') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-heart"></i>
+              <p>
+                Blood Bank
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.blog') }}" class="nav-link {{ Route::is('admin.blog') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Blog
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.event') }}" class="nav-link {{ Route::is('admin.event') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-calendar-week"></i>
+              <p>
+                Event
+              </p>
+            </a>
+          </li>
+
           {{-- <li class="nav-header">Message Manage</li> --}}
           <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-envelope"></i>
+            <a href="{{ route('admin.fqa') }}" class="nav-link {{ Route::is('admin.fqa') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-question-circle"></i>
               <p>
-                Contact Us
+                FAQ
               </p>
             </a>
           </li>
@@ -281,7 +308,7 @@
           {{-- Website Management --}}
           <li class="nav-item has-treeview {{ Route::is('admin.website') || Route::is('admin.slider') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cogs"></i>
+                <i class="nav-icon fas fa-pager"></i>
                 <p>
                     Website
                     <i class="fas fa-angle-left right"></i>
@@ -290,14 +317,14 @@
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('admin.slider') }}" class="nav-link {{ Route::is('admin.slider') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-flag"></i>
                         <p>Banner</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.website') }}" class="nav-link {{ Route::is('admin.website') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cogs"></i>
-                        <p>Site Info Update</p>
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Setting</p>
                     </a>
                 </li>
             </ul>

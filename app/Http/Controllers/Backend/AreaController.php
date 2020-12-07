@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Thana;
 use App\Models\Admin\Area;
 use App\Models\User;
+use App\Models\Admin\Website;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -19,10 +20,11 @@ class AreaController extends Controller
      */
     public function index()
     {
+        $website = Website::latest()->first();
         $thanas = Thana::all();
         $areas = Area::all();
 
-        return view('backend.pages.location.area', compact('areas', 'thanas'));
+        return view('backend.pages.location.area', compact('website', 'areas', 'thanas'));
     }
 
     /**
@@ -53,7 +55,7 @@ class AreaController extends Controller
         $area = new Area();
 
         $area->thana_id = $request->thana_id;
-        $area->area_name = $request->area_name;
+        $area->area_name = Str::ucfirst($request->area_name);
         $area->slug = Str::slug($request->area_name);
 
         $area->save();
