@@ -1871,7 +1871,8 @@ img {
 .single-blog-post .content-box .content p {
 	font-size: 14px;
 	color: #9C9C9C;
-	line-height: 26px;
+    line-height: 26px;
+    text-align: justify;
 }
 .single-blog-post .content-box .content span {
 	color: #222222;
