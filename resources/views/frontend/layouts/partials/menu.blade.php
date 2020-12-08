@@ -14,8 +14,8 @@
                     <li class="dropdown">
                         <a href="#">আরো</a>
                         <ul class="submenu">
-                            <li><a href="#">ব্লগ</a></li>
-                            <li><a href="#">প্রশ্ন ও উত্তর</a></li>
+                            <li><a href="{{ route('blog') }}">ব্লগ</a></li>
+                            <li><a href="{{ route('fqa') }}">প্রশ্ন ও উত্তর</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -1429,9 +1429,10 @@ img {
 }
 .faq-home .accrodion .accrodion-content p {
 	margin-bottom: 21px;
-	font-size: 14px;
-	color: #9C9C9C;
-	line-height: 26px;
+	font-size: 15px;
+    color: #2f2d2d;
+    line-height: 26px;
+    text-align: justify;
 }
 .faq-home .accrodion .accrodion-content p:last-child {
 	margin-bottom: 0;
@@ -1824,7 +1825,7 @@ img {
 	padding-right: 25px;
 }
 .single-blog-post .content-box .date-box .inner {
-	width: 65px;
+	width: 115px;
 	text-align: center;
 }
 .single-blog-post .content-box .date-box .inner .date {
@@ -1833,10 +1834,10 @@ img {
 }
 .single-blog-post .content-box .date-box .inner .date b {
 	display: block;
-	font-size: 24px;
-	font-weight: 500;
-	color: #fff;
-	line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 17px;
 }
 .single-blog-post .content-box .date-box .inner .date {
 	font-size: 16px;
@@ -1860,7 +1861,7 @@ img {
 }
 .single-blog-post .content-box .content h3 {
 	font-size: 20px;
-	color: #000000;
+	color: #be1d2d;
 	text-transform: capitalize;
 	margin: 0;
 	line-height: 26px;
@@ -2668,7 +2669,7 @@ img {
 	margin-bottom: 38px;
 }
 .single-sidebar-widget.search input {
-	width: calc(100% - 66px);
+	width: calc(100% - 77px);
 	height: 55px;
 	border: 1px solid #F1F1F1;
 	border-top-left-radius: 30px;

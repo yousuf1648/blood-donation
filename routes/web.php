@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\LogoutController;
 use Illuminate\Support\Facades\Auth;
 
-// TODO: Admin
+// TODO: Admin route's namespace---------------------------
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
@@ -24,11 +24,14 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\HomeController;
 
-// TODO: Frontend Routes----------------------
+// TODO: Frontend Route's namespace----------------------
 use App\Http\Controllers\Frontend\DonorsController;
 use App\Http\Controllers\Frontend\BloodNeedController;
 use App\Http\Controllers\Frontend\BloodRequestController;
 use App\Http\Controllers\Frontend\DonorsRegistrationController;
+use App\Http\Controllers\Frontend\FrontBlogController;
+use App\Http\Controllers\Frontend\FrontBloodBankController;
+use App\Http\Controllers\Frontend\FrontFqaController;
 
 
 
@@ -55,6 +58,13 @@ Route::post('/donor-postcode', [DonorsRegistrationController::class, 'donor_post
 Route::post('/donor-area', [DonorsRegistrationController::class, 'donor_area'])->name('donor.area');
 Route::post('/donor-store', [DonorsRegistrationController::class, 'store'])->name("donor.store");
 Route::get('/donor-registration-confirm', [DonorsRegistrationController::class, 'registration_confirm'])->name("donor.registration.confirm");
+
+// TODO: Front end blog routes------------------------
+Route::get('/blog', [FrontBlogController::class, 'index'])->name("blog");
+Route::get('blog-details-{id}', [FrontBlogController::class, 'show'])->name('blog.details');
+
+// TODO: Front end fqa routes------------------------
+Route::get('/fqa', [FrontFqaController::class, 'index'])->name("fqa");
 
 Auth::routes();
 
