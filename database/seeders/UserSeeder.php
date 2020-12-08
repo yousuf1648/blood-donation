@@ -27,12 +27,12 @@ class UserSeeder extends Seeder
         $user =  User::create([
             'role_id' => '1',
             'donor_id' => $id,
-            'name' => 'Md.Admin',
-            'username' => 'admin',
+            'name' => 'Projanmo IT',
+            'username' => 'admin_proit',
             'first_mobile' => '017512131313',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@projanmoit.com',
             'present_address' => 'Mohammadpur',
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('Proit@1971.net'),
         ]);
 
         DB::table('users')->insert([
