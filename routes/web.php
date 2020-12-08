@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\BloodBankController;
 use App\Http\Controllers\Backend\FqaController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\EventController;
+use App\Http\Controllers\HomeController;
 
 // TODO: Frontend Routes----------------------
 use App\Http\Controllers\Frontend\DonorsController;
@@ -31,7 +32,7 @@ use App\Http\Controllers\Frontend\DonorsRegistrationController;
 
 
 // TODO: Routes Start From Here-------------------------------------------------------------------------
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/area-thana', [HomeController::class, 'area_thana'])->name('area.thana');
 
 // TODO: Front end donor routes------------------------

@@ -34,12 +34,21 @@ class HomeController extends Controller
         $slider = Slider::latest()->first();
         $donors = DB::table('users')
                 ->where('is_donor', '1')
-                ->get()->sortBy("id");
-        $activedonors = DB::table('users')
+                ->orderBy("id", 'DESC')
+                ->get();
+        $activedonorsc = DB::table('users')
                 ->where('is_donor', '1')
                 ->where('status', '1')
-                ->get()->sortBy("id");
-        $activedonorcount = $activedonors->count();
+                ->orderBy("id", 'DESC')
+                ->get();
+        $activedonorcount = $activedonorsc->count();
+
+        $activedonors = DB::table('users')
+                    ->where('is_donor', '1')
+                    ->where('status', '1')
+                    ->orderBy("id", 'DESC')
+                    ->limit(4)
+                    ->get();
 
         $bloodrequest = BloodRequest::all();
         $bloodrequestcount = $bloodrequest->count();
@@ -47,7 +56,7 @@ class HomeController extends Controller
         $approvebloodrequests = BloodRequest::where('status', '1')->get();
 
 
-        return view('frontend.pages.index', compact('website', 'slider', 'activedonorcount', 'approvebloodrequests', 'donors', 'bloodrequestcount'));
+        return view('frontend.pages.index', compact('website', 'slider', 'activedonors', 'activedonorcount', 'approvebloodrequests', 'donors', 'bloodrequestcount'));
     }
 
 
@@ -57,7 +66,7 @@ class HomeController extends Controller
         $dis_id = $request->dis_id;
 
         if (!$dis_id) {
-            $html = '<option value="">'.'থানা নির্বাচন করুন'.'</option>';
+            $html = '<option value="">'.'রক্তের গ্রুপ নির্বাচন করুন'.'</option>';
         } else {
             $html = '';
             $thanas = Thana::where('dis_id',$dis_id)->get();
@@ -67,6 +76,7 @@ class HomeController extends Controller
         }
 
         return response()->json(['html' => $html]);
+
     }
 
 
