@@ -11,6 +11,7 @@ use App\Models\Admin\Postcode;
 use App\Models\Admin\Slider;
 use App\Models\Admin\Thana;
 use App\Models\Admin\Website;
+use App\Models\Frontend\BloodRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
@@ -38,7 +39,11 @@ class DonorsRegistrationController extends Controller
                 ->where('status', '1')
                 ->get()->sortBy("id");
         $activedonorcount = $activedonors->count();
-        return view('frontend.pages.donorregistration', compact('donors', 'website', 'slider', 'activedonorcount'));
+
+        $bloodrequest = BloodRequest::all();
+        $bloodrequestcount = $bloodrequest->count();
+
+        return view('frontend.pages.donorregistration', compact('donors', 'website', 'slider', 'activedonorcount','bloodrequestcount'));
     }
 
     //  Before registration stage------------------------------------------------------------------
@@ -302,8 +307,8 @@ class DonorsRegistrationController extends Controller
                 $donor_insert = DB::table('users')->insert($data);
                 if ($donor_insert) {
                     session()->flush();
-                    $message = "Donor added Successfully!";
-                    return redirect()->route('donor.registration', compact('message'));
+                    $request->session()->put('message', "Registration successfully done!");
+                    return redirect()->route('donor.registration.confirm');
                 }else{
                     $error_message = "Registration failed!";
                     return redirect()->route('donor.donorregistrationfinal', compact('error_message'));
@@ -316,14 +321,35 @@ class DonorsRegistrationController extends Controller
             $donor_insert = DB::table('users')->insert($data);
             if ($donor_insert) {
                 session()->flush();
-                $message = "Donor added Successfully!";
-                return redirect()->route('donor.registration', compact('message'));
+                $request->session()->put('message', "Registration successfully done!");
+                return redirect()->route('donor.registration.confirm');
             }else{
                 $error_message = "Registration failed!";
                 return redirect()->route('donor.donorregistrationfinal', compact('error_message'));
             }
         }
 
+    }
+
+    public function registration_confirm()
+    {
+        $website = Website::latest()->first();
+        $slider = Slider::latest()->first();
+        $bloods = Blood::all();
+        $areas = Area::all();
+        $donors = DB::table('users')
+                ->where('is_donor', '1')
+                ->get()->sortBy("id");
+        $activedonors = DB::table('users')
+                ->where('is_donor', '1')
+                ->where('status', '1')
+                ->get()->sortBy("id");
+        $activedonorcount = $activedonors->count();
+
+        $bloodrequest = BloodRequest::all();
+        $bloodrequestcount = $bloodrequest->count();
+
+        return view('frontend.pages.donorregistrationconfirm', compact('donors', 'bloods', 'areas', 'website', 'slider', 'activedonorcount', 'bloodrequestcount'));
     }
 
     /**

@@ -149,7 +149,7 @@
                 <div class="single-service-home">
                     <div class="content">
                         <h3><i class="flaticon-people-1"></i> রক্তদাতাদের সন্ধান করুন</h3>
-                        <form class="appoinment-form" action="">
+                        <form class="appoinment-form" action="#">
                             <div class="form-group col-md-offset-2 col-md-8">
                                 <div class="select-style">
                                     <select class="form-control js-example-basic-single" name="blood_group" tabindex="-1" aria-hidden="true">
@@ -166,7 +166,7 @@
                             <div class="form-group col-md-offset-2 col-md-8">
                                 <div class="select-style">
                                     <select class="form-control js-example-basic-single" name="dis_id" tabindex="-1" aria-hidden="true" id="dis_id">
-                                        <option value="" selected>রক্তের গ্রুপ নির্বাচন করুন</option>
+                                        <option value="" selected>জেলা নির্বাচন করুন</option>
                                         @php
                                             $districts = DB::table('districts')->get();
                                         @endphp

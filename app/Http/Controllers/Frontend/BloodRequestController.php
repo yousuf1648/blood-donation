@@ -42,8 +42,14 @@ class BloodRequestController extends Controller
                 ->where('status', '1')
                 ->get()->sortBy("id");
         $activedonorcount = $activedonors->count();
-        return view('frontend.pages.bloodrequest', compact('donors', 'bloods', 'areas', 'website', 'slider', 'activedonorcount'));
+
+        $bloodrequest = BloodRequest::all();
+        $bloodrequestcount = $bloodrequest->count();
+
+        return view('frontend.pages.bloodrequest', compact('donors', 'bloods', 'areas', 'website', 'slider', 'activedonorcount', 'bloodrequestcount'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -122,8 +128,8 @@ class BloodRequestController extends Controller
                 $bloodrequest->report_image = $image_url;
                 $slider_insert = $bloodrequest->save();
                 if ($slider_insert) {
-                    $message = "Request send successfully!";
-                    return redirect()->route('blood.request')->with($message);
+                    $request->session()->put('message', "Request send successfully!");
+                    return redirect()->route('blood.request.confirm');
                 }else{
                     $senderror = "Request dose not send successfully!";
                     return redirect()->route('blood.request')->with($senderror);
@@ -133,9 +139,27 @@ class BloodRequestController extends Controller
                 return redirect()->route('blood.request')->with($imgerror);
             }
         }
+    }
 
+    public function request_confirm()
+    {
+        $website = Website::latest()->first();
+        $slider = Slider::latest()->first();
+        $bloods = Blood::all();
+        $areas = Area::all();
+        $donors = DB::table('users')
+                ->where('is_donor', '1')
+                ->get()->sortBy("id");
+        $activedonors = DB::table('users')
+                ->where('is_donor', '1')
+                ->where('status', '1')
+                ->get()->sortBy("id");
+        $activedonorcount = $activedonors->count();
 
+        $bloodrequest = BloodRequest::all();
+        $bloodrequestcount = $bloodrequest->count();
 
+        return view('frontend.pages.bloodrequestconfirm', compact('donors', 'bloods', 'areas', 'website', 'slider', 'activedonorcount', 'bloodrequestcount'));
     }
 
     /**

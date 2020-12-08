@@ -7,6 +7,8 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/datepicker.css') }}">
+    {{-- timepicker --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/timepicker.min.css') }}">
 
     <style>
         .input-field{
@@ -47,7 +49,7 @@
 
                   <div class="row clearfix">
 
-                    <div class="form-group col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <select class="form-control js-example-basic-single" name="blood_group" tabindex="-1" aria-hidden="true">
                             <option value="" selected>রক্তের গ্রুপ নির্বাচন করুন</option>
                             @php
@@ -59,7 +61,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group col-lg-2 col-md-2 col-xs-12">
                         <select class="form-control js-example-basic-single" name="dis_id" tabindex="-1" aria-hidden="true" id="dis_id">
                             <option value="" selected>জেলা নির্বাচন করুন</option>
                             @php
@@ -71,10 +73,14 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group col-lg-2 col-md-2 col-xs-12">
                         <select class="form-control js-example-basic-single" name="thana_id" id="thana" tabindex="-1" aria-hidden="true">
                             <option value="">থানা নির্বাচন করুন </option>
                         </select>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                        <input type="text" class="form-control" name="blood_needed_date" id="datepicker" placeholder="dd/mm/yyyy">
                     </div>
 
                     <div class="form-group doner-search col-lg-2 col-md-2 col-xs-12">
@@ -82,7 +88,7 @@
                     </div>
                 </div>
                 <hr>
-                <h2 class="text-center text-danger">সাম্প্রতিক সময়ে রক্তদাতা হিসেবে যারা যুক্ত হয়েছেন</h2>
+                <h2 class="text-center text-danger">দুঃখিত! এই মুহূর্তে রক্ত প্রয়োজন এমন কোন তথ্য খুঁজে পাওয়া যায় নি।</h2>
               </div>
           </form>
         </div>
@@ -128,41 +134,20 @@
 @section('js')
     <script src="{{ asset('frontend/js/select2.min.js') }}"></script>
     <script src="{{ asset('frontend/js/datepicker.min.js') }}"></script>
+    {{-- timepicker --}}
+    <script src="{{ asset('frontend/js/timepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
 
-        // date picker
-        $(function () {
-	        $('#datepicker').datepicker({
-	            format: "dd/mm/yyyy",
-	            autoclose: true,
-	            todayHighlight: true,
-		        showOtherMonths: true,
-		        selectOtherMonths: true,
-		        autoclose: true,
-		        changeMonth: true,
-		        changeYear: true,
-		        orientation: "button"
-	        });
-        });
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
 
-        // date picker
-        $(function () {
-	        $('#datepickers').datepicker({
-	            format: "dd/mm/yyyy",
-	            autoclose: true,
-	            todayHighlight: true,
-		        showOtherMonths: true,
-		        selectOtherMonths: true,
-		        autoclose: true,
-		        changeMonth: true,
-		        changeYear: true,
-		        orientation: "button"
-	        });
+        $(document).ready(function(){
+            $('input.timepicker').timepicker({});
         });
-
 
         // For post code-------------------------
         $(document).ready(function () {

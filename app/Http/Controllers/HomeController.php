@@ -55,7 +55,6 @@ class HomeController extends Controller
 
         $approvebloodrequests = BloodRequest::where('status', '1')->get();
 
-
         return view('frontend.pages.index', compact('website', 'slider', 'activedonors', 'activedonorcount', 'approvebloodrequests', 'donors', 'bloodrequestcount'));
     }
 

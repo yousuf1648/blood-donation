@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Area;
 use Illuminate\Http\Request;
 use App\Models\Admin\Role;
 use App\Models\Admin\Blood;
@@ -13,12 +14,13 @@ use App\Models\Admin\Website;
 use App\Models\Frontend\BloodRequest;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class DonorsController extends Controller
+class BloodNeedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,9 +43,8 @@ class DonorsController extends Controller
         $bloodrequest = BloodRequest::all();
         $bloodrequestcount = $bloodrequest->count();
 
-        return view('frontend.pages.donor', compact('donors', 'website', 'slider', 'activedonorcount', 'bloodrequestcount'));
+        return view('frontend.pages.bloodneed', compact('donors', 'website', 'slider', 'activedonorcount','bloodrequestcount'));
     }
-
 
     /**
      * Show the form for creating a new resource.

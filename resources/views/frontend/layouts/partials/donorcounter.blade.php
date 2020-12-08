@@ -24,7 +24,7 @@
                     <div class="icon-box">
                         <i class="flaticon-hands"></i>
                     </div>
-                    <span class="timer" data-from="0" data-to="155" data-speed="5000" data-refresh-interval="50">2200</span>
+                    <span class="timer" data-from="0" data-to="{{ $bloodrequestcount }}" data-speed="5000" data-refresh-interval="50">2200</span>
                     <p>বর্তমান রক্তের আবেদন</p>
                 </div>
             </div>

@@ -26,6 +26,7 @@ use App\Http\Controllers\HomeController;
 
 // TODO: Frontend Routes----------------------
 use App\Http\Controllers\Frontend\DonorsController;
+use App\Http\Controllers\Frontend\BloodNeedController;
 use App\Http\Controllers\Frontend\BloodRequestController;
 use App\Http\Controllers\Frontend\DonorsRegistrationController;
 
@@ -38,9 +39,13 @@ Route::post('/area-thana', [HomeController::class, 'area_thana'])->name('area.th
 // TODO: Front end donor routes------------------------
 Route::get('/blood-donor', [DonorsController::class, 'index'])->name("blood.donor");
 
+// TODO: Front end donor routes------------------------
+Route::get('/need-blood', [BloodNeedController::class, 'index'])->name("blood.need");
+
 // TODO: Front end blood request routes------------------------
 Route::get('/blood-request', [BloodRequestController::class, 'index'])->name("blood.request");
 Route::post('/blood-request-store', [BloodRequestController::class, 'store'])->name("blood.request.store");
+Route::get('/blood-request-confirm', [BloodRequestController::class, 'request_confirm'])->name("blood.request.confirm");
 
 // TODO: Front end donor registration routes------------------------
 Route::get('/donor-registration', [DonorsRegistrationController::class, 'index'])->name("donor.registration");
@@ -48,7 +53,8 @@ Route::post('/blood-donor-before-registration', [DonorsRegistrationController::c
 Route::get('/donor-final-registration', [DonorsRegistrationController::class, 'donorregistrationfinal'])->name("donor.donorregistrationfinal");
 Route::post('/donor-postcode', [DonorsRegistrationController::class, 'donor_postcode'])->name('donor.postcode');
 Route::post('/donor-area', [DonorsRegistrationController::class, 'donor_area'])->name('donor.area');
-Route::post('/blood-donor-store', [DonorsRegistrationController::class, 'store'])->name("donor.store");
+Route::post('/donor-store', [DonorsRegistrationController::class, 'store'])->name("donor.store");
+Route::get('/donor-registration-confirm', [DonorsRegistrationController::class, 'registration_confirm'])->name("donor.registration.confirm");
 
 Auth::routes();
 
